@@ -11,5 +11,7 @@ typedef struct
 typedef Array *Array_ptr;
 
 void test_add_to_list(Result *result);
+void test_add_to_start(Result *);
+void test_inset_at(Result *);
 
 #endif
