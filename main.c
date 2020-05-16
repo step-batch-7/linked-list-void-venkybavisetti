@@ -37,22 +37,41 @@ Status is_even(Element value)
 int main()
 {
   List_ptr list = create_list();
-
   add_to_list(list, create_int_element(4));
-  add_to_start(list, create_int_element(2));
-  insert_at(list, create_int_element(3), 1);
-  List_ptr reversed_list = reverse(list);
-  List_ptr mapped_list = map(list, &square);
-  List_ptr filtered_list = filter(list, &is_even);
 
-  printf("list    :");
+  printf("list            : ");
   display_list(list, &display_integers);
-  printf("\nreverse :");
+
+  printf("\nadd_to_list 5   : ");
+  add_to_list(list, create_int_element(5));
+  display_list(list, &display_integers);
+
+  printf("\nadd_to_start 3  : ");
+  add_to_start(list, create_int_element(3));
+  display_list(list, &display_integers);
+
+  printf("\ninsert_at 3 at 1: ");
+  insert_at(list, create_int_element(3), 1);
+  display_list(list, &display_integers);
+
+  printf("\n\nlist            : ");
+  display_list(list, &display_integers);
+  List_ptr reversed_list = reverse(list);
+  printf("\nreverse         : ");
   display_list(reversed_list, &display_integers);
-  printf("\nmap     :");
+
+  printf("\n\nlist            : ");
+  display_list(list, &display_integers);
+  List_ptr mapped_list = map(list, &square);
+  printf("\nmap squares     : ");
   display_list(mapped_list, &display_integers);
-  printf("\nfilter     :");
+
+  printf("\n\nlist            : ");
+  display_list(list, &display_integers);
+  List_ptr filtered_list = filter(list, &is_even);
+  printf("\nfilter evens    : ");
   display_list(filtered_list, &display_integers);
+
   printf("\n");
 
   return 0;

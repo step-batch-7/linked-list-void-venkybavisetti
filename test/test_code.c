@@ -132,3 +132,29 @@ void test_map(Result *result)
   status = assert_array(mapped_second_list, second_expected);
   print_result("Should map when list is not empty", status, result);
 }
+
+Status is_even(Element value)
+{
+  return *(int *)value % 2 == 0;
+}
+
+void test_filter(Result *result)
+{
+  printf("\nmap\n");
+
+  List_ptr list = create_list();
+  List_ptr mapped_first_list = filter(list, &is_even);
+  int firest_test[] = {};
+  Array first_expected = {firest_test, 0};
+  Status status = assert_array(mapped_first_list, first_expected);
+  print_result("Should return new list with empty when empty list is given", status, result);
+
+  add_to_list(list, create_int_element(3));
+  add_to_list(list, create_int_element(4));
+  add_to_list(list, create_int_element(5));
+  List_ptr mapped_second_list = filter(list, &is_even);
+  int second_test[] = {4};
+  Array second_expected = {second_test, 1};
+  status = assert_array(mapped_second_list, second_expected);
+  print_result("Should filter evens when list is not empty", status, result);
+}
