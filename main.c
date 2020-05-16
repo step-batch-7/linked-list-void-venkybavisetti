@@ -137,6 +137,12 @@ int main()
   printf("\nremove_all_occurrences 5: ");
   display_list(rm_ele_all, &display_integers);
 
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+  printf("\nadd_unique 10    : ");
+  add_unique(list, create_int_element(10), &isequal_nums);
+  display_list(list, &display_integers);
+
   printf("\n");
 
   return 0;

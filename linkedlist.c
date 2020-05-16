@@ -247,3 +247,25 @@ List_ptr remove_all_occurrences(List_ptr list, Element element, Matcher matcher)
   }
   return rm_list;
 }
+
+Status search_element(List_ptr list, Element element, Matcher matcher)
+{
+  Status status = Failure;
+  Node_ptr p_walk = list->first;
+  for (int index = 0; index < list->length; index++)
+  {
+    if ((*matcher)(p_walk->element, element))
+    {
+      status = Success;
+    }
+    p_walk = p_walk->next;
+  }
+  return status;
+}
+
+Status add_unique(List_ptr list, Element element, Matcher matcher)
+{
+  if (search_element(list, element, matcher))
+    return Failure;
+  return add_to_list(list, element);
+}
