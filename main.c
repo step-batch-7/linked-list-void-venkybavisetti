@@ -48,6 +48,8 @@ void add_one(Element value)
 int main()
 {
   List_ptr list = create_list();
+  add_to_list(list, create_int_element(2));
+  add_to_list(list, create_int_element(3));
   add_to_list(list, create_int_element(4));
 
   printf("list             : ");
@@ -108,6 +110,12 @@ int main()
   Element rm_ele_end = remove_from_end(list);
   printf("\nremove_from_end  : ");
   display_integers(rm_ele_end);
+
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+  Element rm_ele_at = remove_at(list, 1);
+  printf("\nremove_from_at   : ");
+  display_integers(rm_ele_at);
 
   printf("\n");
 
