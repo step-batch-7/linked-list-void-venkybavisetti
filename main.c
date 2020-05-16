@@ -45,12 +45,20 @@ void add_one(Element value)
   ++*(int *)value;
 }
 
+Status isequal_nums(Element element_a, Element element_b)
+{
+  return *(int *)element_a == *(int *)element_b;
+}
+
 int main()
 {
   List_ptr list = create_list();
   add_to_list(list, create_int_element(2));
   add_to_list(list, create_int_element(3));
   add_to_list(list, create_int_element(4));
+  add_to_list(list, create_int_element(5));
+  add_to_list(list, create_int_element(6));
+  add_to_list(list, create_int_element(7));
 
   printf("list             : ");
   display_list(list, &display_integers);
@@ -116,6 +124,12 @@ int main()
   Element rm_ele_at = remove_at(list, 1);
   printf("\nremove_from_at   : ");
   display_integers(rm_ele_at);
+
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+  Element rm_ele_fir = remove_first_occurrence(list, create_int_element(4), &isequal_nums);
+  printf("\nremove_first_occurrence: ");
+  display_integers(rm_ele_fir);
 
   printf("\n");
 

@@ -216,3 +216,17 @@ Element remove_at(List_ptr list, int position)
 
   return element;
 }
+
+Element remove_first_occurrence(List_ptr list, Element element, Matcher matcher)
+{
+  Node_ptr p_walk = list->first;
+  for (int index = 0; index < list->length; index++)
+  {
+    if ((*matcher)(p_walk->element, element))
+    {
+      return (remove_at(list, index));
+    }
+    p_walk = p_walk->next;
+  }
+  return NULL;
+}
