@@ -26,6 +26,7 @@ int main(void)
   test_add_to_list(&result);
   test_add_to_start(&result);
   test_insert_at(&result);
+  test_reverse(&result);
   final_result(&result);
   return 0;
 }

@@ -83,3 +83,23 @@ void test_insert_at(Result *result)
   status = assert_array(list, third_expected);
   print_result("Should add the element at the middle when possition is given in middle", status, result);
 }
+
+void test_reverse(Result *result)
+{
+  printf("\nreverse\n");
+
+  List_ptr list = create_list();
+  List_ptr reversed_list = reverse(list);
+  int firest_test[] = {};
+  Array first_expected = {firest_test, 0};
+  Status status = assert_array(list, first_expected);
+  print_result("Should return new list with empty when empty list is given", status, result);
+
+  add_to_start(list, create_int_element(3));
+  add_to_start(list, create_int_element(4));
+  add_to_start(list, create_int_element(5));
+  int second_test[] = {5, 4, 3};
+  Array second_expected = {second_test, 3};
+  status = assert_array(list, second_expected);
+  print_result("Should reverse when list is not empty", status, result);
+}

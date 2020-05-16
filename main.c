@@ -29,7 +29,12 @@ int main()
   add_to_list(list, create_int_element(4));
   add_to_start(list, create_int_element(2));
   insert_at(list, create_int_element(3), 1);
+  List_ptr reversed_list = reverse(list);
+
   display_list(list, &display_integers);
+  printf("\n");
+  display_list(reversed_list, &display_integers);
+  printf("\n");
 
   return 0;
 }
