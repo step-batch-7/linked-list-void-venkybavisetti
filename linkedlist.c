@@ -11,7 +11,6 @@ List_ptr create_list(void)
   return list;
 }
 
-
 Node_ptr create_node(Element element)
 {
   Node_ptr new_node = malloc(sizeof(Node));
@@ -21,7 +20,6 @@ Node_ptr create_node(Element element)
 
   return new_node;
 }
-
 
 Status add_to_list(List_ptr list, Element element)
 {
@@ -34,6 +32,19 @@ Status add_to_list(List_ptr list, Element element)
   }
   (*ptr_to_set) = new_node;
   list->last = new_node;
+  list->length++;
+  return Success;
+}
+
+Status add_to_start(List_ptr list, Element element)
+{
+  Node_ptr new_node = create_node(element);
+  if (list->first == NULL)
+  {
+    list->last = new_node;
+  }
+  new_node->next = list->first;
+  list->first = new_node;
   list->length++;
   return Success;
 }

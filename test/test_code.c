@@ -27,6 +27,7 @@ Status assert_array(List_ptr actual_array, Array expected_array)
 
 void test_add_to_list(Result *result)
 {
+  printf("\nadd_to_list\n");
   List_ptr list = create_list();
   add_to_list(list, create_int_element(3));
   int firest_test[] = {3};
@@ -35,6 +36,24 @@ void test_add_to_list(Result *result)
   print_result("Should add at first when list is empty", status, result);
 
   add_to_list(list, create_int_element(4));
+  int second_test[] = {3, 4};
+  Array second_expected = {second_test, 2};
+  status = assert_array(list, second_expected);
+  print_result("Should add the element at the end when list is not empty", status, result);
+}
+
+void test_add_to_start(Result *result)
+{
+  printf("\nadd_to_start\n");
+
+  List_ptr list = create_list();
+  add_to_start(list, create_int_element(4));
+  int firest_test[] = {4};
+  Array first_expected = {firest_test, 1};
+  Status status = assert_array(list, first_expected);
+  print_result("Should add at first when list is empty", status, result);
+
+  add_to_start(list, create_int_element(3));
   int second_test[] = {3, 4};
   Array second_expected = {second_test, 2};
   status = assert_array(list, second_expected);
