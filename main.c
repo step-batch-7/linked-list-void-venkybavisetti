@@ -145,8 +145,8 @@ int main()
 
   printf("\n\nlist             : ");
   display_list(list, &display_integers);
+  printf("\nlist_clear       : ");
   clear_list(list);
-  printf("\n\nlist             : ");
   display_list(list, &display_integers);
 
   printf("\n");
