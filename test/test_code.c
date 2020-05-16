@@ -130,5 +130,5 @@ void test_map(Result *result)
   int second_test[] = {9, 16, 25};
   Array second_expected = {second_test, 3};
   status = assert_array(mapped_second_list, second_expected);
-  print_result("Should reverse when list is not empty", status, result);
+  print_result("Should map when list is not empty", status, result);
 }

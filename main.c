@@ -29,6 +29,11 @@ Element square(Element value)
   return integer;
 }
 
+Status is_even(Element value)
+{
+  return *(int *)value % 2 == 0;
+}
+
 int main()
 {
   List_ptr list = create_list();
@@ -38,6 +43,7 @@ int main()
   insert_at(list, create_int_element(3), 1);
   List_ptr reversed_list = reverse(list);
   List_ptr mapped_list = map(list, &square);
+  List_ptr filtered_list = filter(list, &is_even);
 
   printf("list    :");
   display_list(list, &display_integers);
@@ -45,6 +51,8 @@ int main()
   display_list(reversed_list, &display_integers);
   printf("\nmap     :");
   display_list(mapped_list, &display_integers);
+  printf("\nfilter     :");
+  display_list(filtered_list, &display_integers);
   printf("\n");
 
   return 0;

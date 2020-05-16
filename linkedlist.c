@@ -106,3 +106,40 @@ List_ptr map(List_ptr list, Mapper mapper)
   }
   return new_list;
 }
+
+ArrayVoid_ptr filter_void(ArrayVoid_ptr src, PredicateVoid predicate)
+{
+  Object filtered_values[src->length];
+  int count = 0;
+  for (int i = 0; i < src->length; i++)
+  {
+    if ((*predicate)(src->array[i]))
+    {
+      filtered_values[count] = src->array[i];
+      count++;
+    }
+  }
+
+  ArrayVoid_ptr array = (ArrayVoid_ptr)malloc(sizeof(ArrayVoid));
+  array->array = (Object *)malloc(sizeof(Object) * count);
+  array->length = count;
+  for (int i = 0; i < array->length; i++)
+  {
+    array->array[i] = filtered_values[i];
+  }
+  return array;
+}
+
+List_ptr filter(List_ptr list, Predicate predicate)
+{
+  List_ptr new_list = create_list();
+  Node_ptr p_walk = list->first;
+  while (p_walk != NULL)
+  {
+    if ((*predicate)(p_walk->element))
+    {
+      add_to_list(new_list, p_walk->element);
+    }
+  }
+  return new_list;
+}
