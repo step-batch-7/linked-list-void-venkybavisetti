@@ -156,3 +156,33 @@ Element remove_from_start(List_ptr list)
   free(node_to_free);
   return element;
 }
+
+Element remove_from_end(List_ptr list)
+{
+  if (list->length == 0)
+    return NULL;
+  Element element = list->last->element;
+  Node_ptr node_to_free = list->last;
+  if (list->length == 1)
+  {
+    node_to_free = list->first;
+    list->first = NULL;
+    list->last = NULL;
+    list->length--;
+    free(node_to_free);
+    return element;
+  }
+  Node_ptr p_walk = list->first;
+  for (int i = list->length; i > 1; i--)
+  {
+    if (i == 2)
+    {
+      p_walk->next = NULL;
+      list->last = p_walk;
+      list->length--;
+      free(node_to_free);
+    }
+    p_walk = p_walk->next;
+  }
+  return element;
+}

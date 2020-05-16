@@ -99,9 +99,15 @@ int main()
 
   printf("\n\nlist             : ");
   display_list(list, &display_integers);
-  Element element = remove_from_start(list);
+  Element rm_ele_str = remove_from_start(list);
   printf("\nremove_from_start: ");
-  display_integers(element);
+  display_integers(rm_ele_str);
+
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+  Element rm_ele_end = remove_from_end(list);
+  printf("\nremove_from_end  : ");
+  display_integers(rm_ele_end);
 
   printf("\n");
 
