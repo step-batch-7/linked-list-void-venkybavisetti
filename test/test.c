@@ -25,6 +25,7 @@ int main(void)
   Result result = {0, 0};
   test_add_to_list(&result);
   test_add_to_start(&result);
+  test_insert_at(&result);
   final_result(&result);
   return 0;
 }

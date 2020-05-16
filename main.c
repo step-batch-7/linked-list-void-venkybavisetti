@@ -26,8 +26,9 @@ int main()
 {
   List_ptr list = create_list();
 
-  add_to_list(list, create_int_element(3));
+  add_to_list(list, create_int_element(4));
   add_to_start(list, create_int_element(2));
+  insert_at(list, create_int_element(3), 1);
   display_list(list, &display_integers);
 
   return 0;
