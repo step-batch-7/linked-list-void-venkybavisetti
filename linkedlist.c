@@ -127,7 +127,7 @@ Element reduce(List_ptr list, Element init, Reducer reducer)
   Node_ptr p_walk = list->first;
   while (p_walk != NULL)
   {
-    (*reducer)(init, p_walk->element);
+    init = (*reducer)(init, p_walk->element);
     p_walk = p_walk->next;
   }
   return init;
@@ -152,6 +152,8 @@ Element remove_from_start(List_ptr list)
   Node_ptr node_to_free = list->first;
   Element element = node_to_free->element;
   list->first = list->first->next;
+  if (list->length == 1)
+    list->last = NULL;
   list->length--;
   free(node_to_free);
   return element;
