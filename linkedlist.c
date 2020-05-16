@@ -230,3 +230,20 @@ Element remove_first_occurrence(List_ptr list, Element element, Matcher matcher)
   }
   return NULL;
 }
+
+List_ptr remove_all_occurrences(List_ptr list, Element element, Matcher matcher)
+{
+  List_ptr rm_list = create_list();
+  Element rm_ele = remove_first_occurrence(list, element, matcher);
+  rm_ele &&add_to_list(rm_list, rm_ele);
+  if (rm_ele == NULL)
+  {
+    return rm_list;
+  }
+  while (rm_ele != NULL)
+  {
+    rm_ele = remove_first_occurrence(list, element, matcher);
+    rm_ele &&add_to_list(rm_list, rm_ele);
+  }
+  return rm_list;
+}

@@ -127,9 +127,15 @@ int main()
 
   printf("\n\nlist             : ");
   display_list(list, &display_integers);
-  Element rm_ele_fir = remove_first_occurrence(list, create_int_element(4), &isequal_nums);
-  printf("\nremove_first_occurrence: ");
+  Element rm_ele_fir = remove_first_occurrence(list, create_int_element(5), &isequal_nums);
+  printf("\nremove_first_occurrence 5: ");
   display_integers(rm_ele_fir);
+
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+  List_ptr rm_ele_all = remove_all_occurrences(list, create_int_element(4), &isequal_nums);
+  printf("\nremove_all_occurrences 5: ");
+  display_list(rm_ele_all, &display_integers);
 
   printf("\n");
 
