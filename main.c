@@ -40,6 +40,11 @@ Element sum(Element total, Element value)
   return total;
 }
 
+void add_one(Element value)
+{
+  ++*(int *)value;
+}
+
 int main()
 {
   List_ptr list = create_list();
@@ -85,6 +90,12 @@ int main()
   sum_of_all_nums = reduce(list, &context, &sum);
   printf("\nreduce sum      : ");
   display_integers(sum_of_all_nums);
+
+  printf("\n\nlist            : ");
+  display_list(list, &display_integers);
+  forEach(list, &add_one);
+  printf("\nforeach add 1   : ");
+  display_list(list, &display_integers);
 
   printf("\n");
 
