@@ -50,52 +50,58 @@ int main()
   List_ptr list = create_list();
   add_to_list(list, create_int_element(4));
 
-  printf("list            : ");
+  printf("list             : ");
   display_list(list, &display_integers);
 
-  printf("\nadd_to_list 5   : ");
+  printf("\nadd_to_list 5    : ");
   add_to_list(list, create_int_element(5));
   display_list(list, &display_integers);
 
-  printf("\nadd_to_start 3  : ");
+  printf("\nadd_to_start 3   : ");
   add_to_start(list, create_int_element(3));
   display_list(list, &display_integers);
 
-  printf("\ninsert_at 3 at 1: ");
+  printf("\ninsert_at 3 at 1 : ");
   insert_at(list, create_int_element(3), 1);
   display_list(list, &display_integers);
 
-  printf("\n\nlist            : ");
+  printf("\n\nlist             : ");
   display_list(list, &display_integers);
   List_ptr reversed_list = reverse(list);
-  printf("\nreverse         : ");
+  printf("\nreverse          : ");
   display_list(reversed_list, &display_integers);
 
-  printf("\n\nlist            : ");
+  printf("\n\nlist             : ");
   display_list(list, &display_integers);
   List_ptr mapped_list = map(list, &square);
-  printf("\nmap squares     : ");
+  printf("\nmap squares      : ");
   display_list(mapped_list, &display_integers);
 
-  printf("\n\nlist            : ");
+  printf("\n\nlist             : ");
   display_list(list, &display_integers);
   List_ptr filtered_list = filter(list, &is_even);
-  printf("\nfilter evens    : ");
+  printf("\nfilter evens     : ");
   display_list(filtered_list, &display_integers);
 
-  printf("\n\nlist            : ");
+  printf("\n\nlist             : ");
   display_list(list, &display_integers);
   Element initial_context, sum_of_all_nums;
   int context = 0;
   sum_of_all_nums = reduce(list, &context, &sum);
-  printf("\nreduce sum      : ");
+  printf("\nreduce sum       : ");
   display_integers(sum_of_all_nums);
 
-  printf("\n\nlist            : ");
+  printf("\n\nlist             : ");
   display_list(list, &display_integers);
   forEach(list, &add_one);
-  printf("\nforeach add 1   : ");
+  printf("\nforeach add 1    : ");
   display_list(list, &display_integers);
+
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+  Element element = remove_from_start(list);
+  printf("\nremove_from_start: ");
+  display_integers(element);
 
   printf("\n");
 
