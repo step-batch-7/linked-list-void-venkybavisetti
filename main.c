@@ -34,6 +34,12 @@ Status is_even(Element value)
   return *(int *)value % 2 == 0;
 }
 
+Element sum(Element total, Element value)
+{
+  *(int *)total = (*(int *)total) + (*(int *)value);
+  return total;
+}
+
 int main()
 {
   List_ptr list = create_list();
@@ -71,6 +77,14 @@ int main()
   List_ptr filtered_list = filter(list, &is_even);
   printf("\nfilter evens    : ");
   display_list(filtered_list, &display_integers);
+
+  printf("\n\nlist            : ");
+  display_list(list, &display_integers);
+  Element initial_context, sum_of_all_nums;
+  int context = 0;
+  sum_of_all_nums = reduce(list, &context, &sum);
+  printf("\nreduce sum      : ");
+  display_integers(sum_of_all_nums);
 
   printf("\n");
 
