@@ -269,3 +269,14 @@ Status add_unique(List_ptr list, Element element, Matcher matcher)
     return Failure;
   return add_to_list(list, element);
 }
+
+Status clear_list(List_ptr list)
+{
+  Status status = Failure;
+  while (list->length > 0)
+  {
+    status = remove_from_end(list) && Success;
+  }
+
+  return status;
+}

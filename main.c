@@ -143,6 +143,12 @@ int main()
   add_unique(list, create_int_element(10), &isequal_nums);
   display_list(list, &display_integers);
 
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+  clear_list(list);
+  printf("\n\nlist             : ");
+  display_list(list, &display_integers);
+
   printf("\n");
 
   return 0;
