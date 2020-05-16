@@ -22,6 +22,13 @@ Element create_int_element(int value)
   return element;
 }
 
+Element square(Element value)
+{
+  Element integer = malloc(sizeof(Element));
+  *(int *)integer = (*(int *)value) * (*(int *)value);
+  return integer;
+}
+
 int main()
 {
   List_ptr list = create_list();
@@ -30,10 +37,14 @@ int main()
   add_to_start(list, create_int_element(2));
   insert_at(list, create_int_element(3), 1);
   List_ptr reversed_list = reverse(list);
+  List_ptr mapped_list = map(list, &square);
 
+  printf("list    :");
   display_list(list, &display_integers);
-  printf("\n");
+  printf("\nreverse :");
   display_list(reversed_list, &display_integers);
+  printf("\nmap     :");
+  display_list(mapped_list, &display_integers);
   printf("\n");
 
   return 0;

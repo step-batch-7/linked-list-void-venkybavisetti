@@ -89,17 +89,46 @@ void test_reverse(Result *result)
   printf("\nreverse\n");
 
   List_ptr list = create_list();
-  List_ptr reversed_list = reverse(list);
+  List_ptr reversed_first_list = reverse(list);
   int firest_test[] = {};
   Array first_expected = {firest_test, 0};
-  Status status = assert_array(list, first_expected);
+  Status status = assert_array(reversed_first_list, first_expected);
   print_result("Should return new list with empty when empty list is given", status, result);
 
-  add_to_start(list, create_int_element(3));
-  add_to_start(list, create_int_element(4));
-  add_to_start(list, create_int_element(5));
+  add_to_list(list, create_int_element(3));
+  add_to_list(list, create_int_element(4));
+  add_to_list(list, create_int_element(5));
+  List_ptr reversed_second_list = reverse(list);
   int second_test[] = {5, 4, 3};
   Array second_expected = {second_test, 3};
-  status = assert_array(list, second_expected);
+  status = assert_array(reversed_second_list, second_expected);
+  print_result("Should reverse when list is not empty", status, result);
+}
+
+Element square(Element value)
+{
+  Element integer = malloc(sizeof(Element));
+  *(int *)integer = (*(int *)value) * (*(int *)value);
+  return integer;
+}
+
+void test_map(Result *result)
+{
+  printf("\nmap\n");
+
+  List_ptr list = create_list();
+  List_ptr mapped_first_list = map(list, &square);
+  int firest_test[] = {};
+  Array first_expected = {firest_test, 0};
+  Status status = assert_array(mapped_first_list, first_expected);
+  print_result("Should return new list with empty when empty list is given", status, result);
+
+  add_to_list(list, create_int_element(3));
+  add_to_list(list, create_int_element(4));
+  add_to_list(list, create_int_element(5));
+  List_ptr mapped_second_list = map(list, &square);
+  int second_test[] = {9, 16, 25};
+  Array second_expected = {second_test, 3};
+  status = assert_array(mapped_second_list, second_expected);
   print_result("Should reverse when list is not empty", status, result);
 }
